@@ -1,0 +1,106 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Scanner scanner2 = new Scanner(System.in);
+        System.out.println("Escolha a sua classe");
+        String x = scanner.nextLine();
+
+
+        switch (x) {
+            case ("Gerente"):
+                Gerente g = new Gerente();
+                System.out.println("Digite o seu nome");
+                g.setNome(scanner2.nextLine());
+                System.out.println("Digite o seu salario");
+                g.setSalario(scanner.nextInt());
+                scanner.nextLine();
+                System.out.println("Digite o seu departamento");
+                g.setDepartamento(scanner.nextLine());
+                g.calcularMultiplicacaoSal();
+                System.out.println("Salario com os 10%");
+
+                System.out.println(g.getNome());
+                System.out.println(g.getSalario());
+                System.out.println(g.getDepartamento());
+                System.out.println(g.getMultiplicacaoSal());
+                break;
+
+            case ("Diretor"):
+                Diretor d = new Diretor();
+                System.out.println("Digite o seu nome");
+                d.setNome(scanner2.nextLine());
+                System.out.println("Digite o seu salario");
+                d.setSalario(scanner.nextInt());
+                System.out.println("Digite quantas ações você tem");
+                d.setacoes(scanner.nextInt());
+
+                System.out.println(d.getNome());
+                System.out.println(d.getSalario());
+                System.out.println(d.getAcoes());
+
+        }
+    }
+}
+
+
+public class Funcionario {
+
+    protected String nome;
+
+
+    protected int salario;
+
+
+        public void setNome (String nome){
+            this.nome = nome;
+        }
+
+        public void setSalario ( int salario){
+            this.salario = salario;
+        }
+
+        public int getSalario() {
+            return salario;
+        }
+
+        public String getNome() {
+            return nome;
+    }
+}
+
+public class Gerente extends Funcionario {
+    private String departamento;
+    private double multiplicacaoSal; //
+
+    public double calcularMultiplicacaoSal() {
+        multiplicacaoSal = (getSalario() * 0.1) + salario;
+        return multiplicacaoSal;
+    }
+
+    public void setDepartamento(String departamento) {
+        this.departamento = departamento;
+    }
+
+    public String getDepartamento() {
+        return departamento;
+    }
+
+    public double getMultiplicacaoSal() {
+        return multiplicacaoSal;
+    }
+}
+
+public class Diretor extends Funcionario {
+private int acoes;
+
+public void setacoes(int acoes) {
+    this.acoes = acoes;
+    }
+
+            public int getAcoes() {
+                return acoes;
+
+            }
+            }
